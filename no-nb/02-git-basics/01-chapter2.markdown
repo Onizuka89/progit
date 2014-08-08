@@ -38,28 +38,28 @@ Den kommandoen gjør det samme som den forrige, bare at målmappen blir kalt `my
 
 Git har tallvis av forskjellige overgangprotokoller du kan bruke. Det forrige eksemplet bruker `git://`-protokollen , men du ser kanskje også `http(s)://` eller `user@server:/path.gti`, som bruker SSH overganprotokollen. *Kapitel 4* vil introdusere alle de tilgjenglige valgene serveren kan sette opp for å gi tilgang til ditt Git repository og fordelen og ulempen med hver av dem.
 
-## Recording Changes to the Repository ##
+## Lagre Endringer til Repositoriet ##
 
-You have a bona fide Git repository and a checkout or working copy of the files for that project. You need to make some changes and commit snapshots of those changes into your repository each time the project reaches a state you want to record.
+Du har et bona fide Git repository og en checkout eller arbeidkopi af filene i det prosjektet. Du må lange noen endringer og commite bilder av disee endringene inn i repositoriet hver gang prosjektet kommer til et punkt som du ønsker å lagre.
 
-Remember that each file in your working directory can be in one of two states: *tracked* or *untracked*. *Tracked* files are files that were in the last snapshot; they can be *unmodified*, *modified*, or *staged*. *Untracked* files are everything else — any files in your working directory that were not in your last snapshot and are not in your staging area.  When you first clone a repository, all of your files will be tracked and unmodified because you just checked them out and haven’t edited anything.
+Husk at hver fil i arbeidmappe kan ha to tilstander: *tracked*(overvåket) eller *untracked*(ikke overvåket). Overvvåkede filer er filer som var i forrige bilde; de kan være *unmodified*, *modified*, eller *staged*. Filer som ikke er overvåket er alt annet, en hver fil i arbeidmappen som ikke var i ditt forrige bilde og ikke er i ditt *staging area*. Når du førts kloner et repository, så vil alle filene dine være overvåket og unmodified siden du bare sjekker dem ut og har ikke har endret noe. 
 
-As you edit files, Git sees them as modified, because you’ve changed them since your last commit. You *stage* these modified files and then commit all your staged changes, and the cycle repeats. This lifecycle is illustrated in Figure 2-1.
+Ettersom du endrer filer, så ser Git them som modifiserte, siden du har endret dem siden din forrige commit. Du *stager* disse modifiserte filene og så commiter du endringene, og syklusen gjentas. Denne livssyklusen er illustrert i Figur 2-1.
 
 Insert 18333fig0201.png
-Figure 2-1. The lifecycle of the status of your files.
+Figur 2-1. Livssyklusen for statusen til filene dine.
 
-### Checking the Status of Your Files ###
+### Sjekke Statusen på Filene Dine ###
 
-The main tool you use to determine which files are in which state is the `git status` command. If you run this command directly after a clone, you should see something like this:
+Hoved verktøyet du bruker for å avgjøre hvile filer er i hvilken tilstand er `git status` kommandoen. Hvis du kjærer denne kommandoen rett etter en klone, så burde du se noe slik:
 
 	$ git status
 	On branch master
 	nothing to commit, working directory clean
 
-This means you have a clean working directory — in other words, no tracked files are modified. Git also doesn’t see any untracked files, or they would be listed here. Finally, the command tells you which branch you’re on. For now, that is always `master`, which is the default; you won’t worry about it here. The next chapter will go over branches and references in detail.
+Dette betyr at du har en ren arbeidmappe, med andre ord, ingen overvåkede filer er modifiserte. Git ser heller ikke noen ikke overvåkede filer, eller så ville de ha vært listet der. Til slut,, så forteller kommandoen hvilken branch(gren) du er på. For nå, så vil det alltid være `master`, som er det forhåndsinnstilte, du trenger ikke tenke på det her. I det neste kaptitellet vil gå over branches og referanser i detalj.
 
-Let’s say you add a new file to your project, a simple `README` file. If the file didn’t exist before, and you run `git status`, you see your untracked file like so:
+La oss si at du legger til en ny fil i prosjektet ditt, en enkel `README` fil. Hvis filene ikke eksisterte før, og du bruker `git status`, så vil du se de ikke overvåkede filene slik:
 
 	$ vim README
 	$ git status
@@ -71,7 +71,7 @@ Let’s say you add a new file to your project, a simple `README` file. If the f
 
 	nothing added to commit but untracked files present (use "git add" to track)
 
-You can see that your new `README` file is untracked, because it’s under the “Untracked files” heading in your status output. Untracked basically means that Git sees a file you didn’t have in the previous snapshot (commit); Git won’t start including it in your commit snapshots until you explicitly tell it to do so. It does this so you don’t accidentally begin including generated binary files or other files that you did not mean to include. You do want to start including README, so let’s start tracking the file.
+Du kan se at din nye `README` fil er ikke overvåket, fordi den er under  "Untracked files" headeren i status informasjonen din. Ikke overvåket betyr i bunn og grunn at Git ser en fil du ikke har i det forrige bildet (commit). Git vil ikke begynne å inkludere den i dine commit bilder før du eksplisitt forteller den at den skal gjøre det. Den gjøre det så du ikke ved uhell begynnere å inkludere genererte binærfiler og andre filer som du ikke hadde tenkt å inkludere. Du vil starte å overvåke README, så la oss begynne og overvåke filen.
 
 ### Tracking New Files ###
 
