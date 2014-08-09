@@ -73,13 +73,13 @@ La oss si at du legger til en ny fil i prosjektet ditt, en enkel `README` fil. H
 
 Du kan se at din nye `README` fil er ikke overvåket, fordi den er under  "Untracked files" headeren i status informasjonen din. Ikke overvåket betyr i bunn og grunn at Git ser en fil du ikke har i det forrige bildet (commit). Git vil ikke begynne å inkludere den i dine commit bilder før du eksplisitt forteller den at den skal gjøre det. Den gjøre det så du ikke ved uhell begynnere å inkludere genererte binærfiler og andre filer som du ikke hadde tenkt å inkludere. Du vil starte å overvåke README, så la oss begynne og overvåke filen.
 
-### Tracking New Files ###
+### Overvåke Nye Filer ###
 
-In order to begin tracking a new file, you use the command `git add`. To begin tracking the `README` file, you can run this:
+For å begynne å overvåke en ny fil, så bruker du kommandoen `git add`. For å begynne å overvåke `README` file, så kan du kjødre dette:
 
 	$ git add README
 
-If you run your status command again, you can see that your `README` file is now tracked and staged:
+Om du kjører status kommandoen din igjen, så vil du se at `README` filen din nå er overvåket og staged:
 
 	$ git status
 	On branch master
@@ -89,7 +89,7 @@ If you run your status command again, you can see that your `README` file is now
 	        new file:   README
 	
 
-You can tell that it’s staged because it’s under the “Changes to be committed” heading. If you commit at this point, the version of the file at the time you ran `git add` is what will be in the historical snapshot. You may recall that when you ran `git init` earlier, you then ran `git add (files)` — that was to begin tracking files in your directory. The `git add` command takes a path name for either a file or a directory; if it’s a directory, the command adds all the files in that directory recursively.
+Du kan se at den er staged fordi den er under "Changer to be commited" headeren. Hvis du committer nå, så vil versjonen av filen fra når du kjørte `git add` det som vil være i det historiske bildet. Du husker kanskje at når du kjørte `git init` tidligere, så kjørte du `git add (filer)` etter –  det var for å begynne overvåking av filene i mappen din. `git add` kommandoen tar et filstidnavnet til enten en fil eller mappe, om det er en mappe, så vil kommandoen legge til alle filene i den mappen rekursivt.
 
 ### Staging Modified Files ###
 
