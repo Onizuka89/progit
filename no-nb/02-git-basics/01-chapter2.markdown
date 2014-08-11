@@ -51,7 +51,7 @@ Figur 2-1. Livssyklusen for statusen til filene dine.
 
 ### Sjekke Statusen på Filene Dine ###
 
-Hoved verktøyet du bruker for å avgjøre hvile filer er i hvilken tilstand er `git status` kommandoen. Hvis du kjærer denne kommandoen rett etter en klone, så burde du se noe slik:
+Hovedverktøyet du bruker for å avgjøre hvile filer er i hvilken tilstand er `git status` kommandoen. Hvis du kjærer denne kommandoen rett etter en klone, så burde du se noe slik:
 
 	$ git status
 	On branch master
@@ -91,9 +91,9 @@ Om du kjører status kommandoen din igjen, så vil du se at `README` filen din n
 
 Du kan se at den er staged fordi den er under "Changer to be commited" headeren. Hvis du committer nå, så vil versjonen av filen fra når du kjørte `git add` det som vil være i det historiske bildet. Du husker kanskje at når du kjørte `git init` tidligere, så kjørte du `git add (filer)` etter –  det var for å begynne overvåking av filene i mappen din. `git add` kommandoen tar et filstidnavnet til enten en fil eller mappe, om det er en mappe, så vil kommandoen legge til alle filene i den mappen rekursivt.
 
-### Staging Modified Files ###
+### Stage Modifiserte Filer ###
 
-Let’s change a file that was already tracked. If you change a previously tracked file called `benchmarks.rb` and then run your `status` command again, you get something that looks like this:
+La oss endre en fil som allerede er overvåket. Om du endrer en tidligligere overvåket fil kalt `benchmarks.rb` og du så kjører `status` kommandoen igjen, da får du noe som ser nesten slik ut:
 
 	$ git status
 	On branch master
@@ -107,9 +107,9 @@ Let’s change a file that was already tracked. If you change a previously track
 	  (use "git checkout -- <file>..." to discard changes in working directory)
 	
 	        modified:   benchmarks.rb
-	
 
-The `benchmarks.rb` file appears under a section named “Changes not staged for commit” — which means that a file that is tracked has been modified in the working directory but not yet staged. To stage it, you run the `git add` command (it’s a multipurpose command — you use it to begin tracking new files, to stage files, and to do other things like marking merge-conflicted files as resolved). Let’s run `git add` now to stage the `benchmarks.rb` file, and then run `git status` again:
+
+`benchmarks.rb` filen ser ut til å være under en seksjon kalt "Changes not staged for commit" –  som betyr at en fil som er overvåket har blitt modifisert i arbeidmappen men ikke har blitt staget enda. For å lagre det, så kjører du `git add` kommandoen (det er en kommando med flere formål –  du bruker det til å begynne å overvåke nye filer, for å stage filer, og å gjøre andre ting som å merke filer i merge-konflikter som fikset). La oss kjøre `git add` nå for å stage `benchmarks.rb` fil, og så khærer du `git status` igjen:
 
 	$ git add benchmarks.rb
 	$ git status
@@ -121,7 +121,7 @@ The `benchmarks.rb` file appears under a section named “Changes not staged for
 	        modified:   benchmarks.rb
 	
 
-Both files are staged and will go into your next commit. At this point, suppose you remember one little change that you want to make in `benchmarks.rb` before you commit it. You open it again and make that change, and you’re ready to commit. However, let’s run `git status` one more time:
+Begge filene er staget og vil du gå inn i din neste kommit. La oss si du husker en liten endring som du ønsker å ha med inn i `benchmarks.rb` før du committer det. Du åpner den igjen og gjøre den endringen, og du er klar for å committe. Men, la oss kjøre `git status` en gang til:
 
 	$ vim benchmarks.rb
 	$ git status
@@ -138,8 +138,7 @@ Both files are staged and will go into your next commit. At this point, suppose 
 	
 	        modified:   benchmarks.rb
 	
-
-What the heck? Now `benchmarks.rb` is listed as both staged and unstaged. How is that possible? It turns out that Git stages a file exactly as it is when you run the `git add` command. If you commit now, the version of `benchmarks.rb` as it was when you last ran the `git add` command is how it will go into the commit, not the version of the file as it looks in your working directory when you run `git commit`. If you modify a file after you run `git add`, you have to run `git add` again to stage the latest version of the file:
+Hva i alle... Nå er `benchmarks.rb` listet som både staged og unstaged. Hvordan er det mulig? Det viser seg at Git stager en fil akkurat som den var når du kjørte `git add` kommandoen. Hvis du committer nå, versjonen av `benchmarks.rb` som den var når du sist kjørte `git add` kommandoen er sånn den vil gå inn i committen, ikke versjonen av filen som den ser ut i arbeidmappen din når du kjører `git commit`. Om du modifiserer en fil etter du kjører `git add`, du må kjøre `git add` igjen for å stage den siste versjonen av filen:
 
 	$ git add benchmarks.rb
 	$ git status
