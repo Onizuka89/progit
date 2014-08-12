@@ -150,42 +150,43 @@ Hva i alle... Nå er `benchmarks.rb` listet som både staged og unstaged. Hvorda
 	        modified:   benchmarks.rb
 	
 
-### Ignoring Files ###
 
-Often, you’ll have a class of files that you don’t want Git to automatically add or even show you as being untracked. These are generally automatically generated files such as log files or files produced by your build system. In such cases, you can create a file listing patterns to match them named `.gitignore`.  Here is an example `.gitignore` file:
+### Ignorere Filer ###
+
+Ofte, så vil du ha en type filer som du ikke vil at Git automatisk skal legge til eller engang vise deg at de ikke er overvåket. Disse er generelt automatisk genererte filer slik som logfiler eller filer produsert av ditt byggesystem. I slike tilfeller, så kan du lage en fil som lister mønstre som matcher disse, kalt `.gitignore`. Her er et eksempel på en `.gitignore` fil.
 
 	$ cat .gitignore
 	*.[oa]
 	*~
 
-The first line tells Git to ignore any files ending in `.o` or `.a` — *object* and *archive* files that may be the product of building your code. The second line tells Git to ignore all files that end with a tilde (`~`), which is used by many text editors such as Emacs to mark temporary files. You may also include a `log`, `tmp`, or `pid` directory; automatically generated documentation; and so on. Setting up a `.gitignore` file before you get going is generally a good idea so you don’t accidentally commit files that you really don’t want in your Git repository.
+Den første linjen forteller Git at den skal ignorere filer som slutter på `.o` eller `.a` –  *object* og *archive* filer som kan bli produsert ved bygging av koden din. Den andre linjen forteller Git at den skal ignorere alle filer som slutter med en tild (`~`) siden den er burkt i mange teksteditorer som Emacs for å markere midlertidige filer. Du kan også inkludere en `log`, `tmp` eller `pid` mappe, som ofter er brukt for automatisk generert dokumentasjon også videre. Å sette opp en `.gitignore` fil fær du starter er som oftest en god ide, slik at du ikke ved uhell committer filer som du ikke egentlig vil ha i Git repositoriet.
 
-The rules for the patterns you can put in the `.gitignore` file are as follows:
+Reglene for mønstrene du kan sette inn i `.gitignore` filen er som følger:
 
-*	Blank lines or lines starting with `#` are ignored.
-*	Standard glob patterns work.
-*	You can end patterns with a forward slash (`/`) to specify a directory.
-*	You can negate a pattern by starting it with an exclamation point (`!`).
+*	Blanke linjer eller linjer som starter med `#` er ignorert.
+*	Vanlig mønster matching virker.
+*	Du kan slutte et mænster med en forover slash (`/`) for å spesifisere en mappe.
+*	Du kan gjøre et mønster omvendt ved å starte det med et utropstegn (`!`).
 
-Glob patterns are like simplified regular expressions that shells use. An asterisk (`*`) matches zero or more characters; `[abc]` matches any character inside the brackets (in this case `a`, `b`, or `c`); a question mark (`?`) matches a single character; and brackets enclosing characters separated by a hyphen(`[0-9]`) matches any character in the range (in this case 0 through 9) .
+Mønster matching er litt som simplifisert regulæruttrykk som shell bruker. En asterisk (`*`) matcher null eller flere tegn;  `[abc]` matcher et hvilket som helst tegn i brakkene (i dette tilfellt `a`, `b`, eller `c`);  et spørsmåltegn (`?`) matcher et enkelt tegn; brakker rundt tegn separert med bindestrek(`[0-9]`) matcher hvilket som helst av tegnene i mellom de to tegnene (i dette tilfellet mellom 0 og 9 inkludert 0 og 9).
 
-Here is another example `.gitignore` file:
+Her er enda et eksempel på en `.gitignore` fil:
 
-	# a comment - this is ignored
-	# no .a files
+	# en kommentar - dette er ignorert
+	# ingen .a filer
 	*.a
-	# but do track lib.a, even though you're ignoring .a files above
+	# men overvåk lib.a, selv om du ignorere .a filer over
 	!lib.a
-	# only ignore the root TODO file, not subdir/TODO
+	# ignorere TODO filen i denne mappen, ikke undermappe/TODO
 	/TODO
-	# ignore all files in the build/ directory
+	# ignorer alle filene i build/ mappen
 	build/
-	# ignore doc/notes.txt, but not doc/server/arch.txt
+	# ignorer .txt filer i doc, men ikke doc/server/
 	doc/*.txt
-	# ignore all .txt files in the doc/ directory
+	# ignorer alle .txt filer i doc/ mappen
 	doc/**/*.txt
 
-A `**/` pattern is available in Git since version 1.8.2.
+Et `**/` mønster har vært tilgjengelig i Git siden versjon 1.8.2.
 
 ### Viewing Your Staged and Unstaged Changes ###
 
